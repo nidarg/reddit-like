@@ -13,36 +13,36 @@ import * as actions from '@/actions';
 import { useFormState } from 'react-dom';
 import FormButton from '../common/FormButton';
 
-export default function TopicCreateForm() {
+export default function PostCreateForm() {
   const [formState, action] = useFormState(actions.createTopic, { errors: {} });
   const { errors } = formState;
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button className='m-4' variant='default'>
-          Create New Topic
+          Create a Post
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-96 mt-4 '>
         <form action={action}>
           <div className='flex flex-col gap-4'>
-            <Label htmlFor='name'>Name</Label>
+            <Label htmlFor='title'>Title</Label>
             <Input
-              name='name'
-              id='name'
+              name='title'
+              id='title'
               className={errors.name ? 'bg-red-200 ' : ''}
             />
             {errors.name &&
               errors.name.map((e) => {
                 return <p className='text-red-600 text-sm'>{e}</p>;
               })}
-            <Label htmlFor='Description'>Description</Label>
+            <Label htmlFor='content'>Content</Label>
             <Textarea
               rows={10}
               className={errors.description ? 'bg-red-200 ' : ''}
-              name='description'
-              id='Description'
-              placeholder='Describe your topic.'
+              name='content'
+              id='content'
+              placeholder='Content'
             />
             {errors.description &&
               errors.description.map((e) => {
